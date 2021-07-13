@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_eip" "nat" {
-  count = 1
+  count = 2
    tags = {
         Owner = "Perumal Varadharajulu"
         Email = "perumal@strinkit.com"
