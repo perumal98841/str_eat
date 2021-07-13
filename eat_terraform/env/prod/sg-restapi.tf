@@ -11,7 +11,7 @@ data "aws_security_group" "bastion" {
 module "sg_restapi" {
     source      = "../../modules/securitygroup"
     aws_region = "us-east-2"
-    name = "jaas-dev-sg-jaas-master"
+    name = "eatzos-prod-sg-restapi"
     vpc_id = module.eatzos_prod_vpc.vpc_id
     description = "Security Group for RestAPI"
     ingress_with_cidr_blocks = [

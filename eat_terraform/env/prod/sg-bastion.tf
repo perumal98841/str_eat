@@ -2,7 +2,7 @@ module "sg_prod_bastion" {
     source      = "../../modules/securitygroup"
     aws_region = "us-east-2"
     create = "true"
-    name = "sg-prod-bastion"
+    name = "eatzos-prod-sg-bastion"
     vpc_id = module.eatzos_prod_vpc.vpc_id
     description = "Security Group for Bastion"
     ingress_with_cidr_blocks = [
