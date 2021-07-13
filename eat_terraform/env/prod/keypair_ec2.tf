@@ -1,4 +1,4 @@
-module "keypair_master" {
+module "keypair-prod-ec2-key" {
     source      = "../../modules/keypair"
 
   key_name   = "keypair-prod-ec2-key"
