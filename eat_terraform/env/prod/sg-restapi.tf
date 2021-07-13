@@ -10,7 +10,7 @@ data "aws_security_group" "bastion" {
 
 module "sg_restapi" {
     source      = "../../modules/securitygroup"
-    aws_region = "us-east-1"
+    aws_region = "us-east-2"
     name = "jaas-dev-sg-jaas-master"
     vpc_id = module.eatzos_prod_vpc.vpc_id
     description = "Security Group for Jenkins-as-a-Service, managed by Terraform"

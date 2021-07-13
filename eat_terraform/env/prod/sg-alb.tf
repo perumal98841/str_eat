@@ -1,6 +1,6 @@
 module "sg_eatzos_alb" {
     source      = "../../modules/securitygroup"
-    aws_region = "us-east-1"
+    aws_region = "us-east-2"
     name = "eatzos-prod-sg-alb"
     vpc_id = module.eatzos_prod_vpc.vpc_id
     description = "Security Group for Jenkins-as-a-Service, managed by Terraform"
