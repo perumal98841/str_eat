@@ -11,7 +11,7 @@ module "eatzos_lc_asg-restapi" {
     source      = "../../modules/lc_asg"
     aws_region = "us-east-2"
 
-  name = "eatzos-prod-lc-restapi"
+  name = "eatzos-prod-restapi"
 
   # Launch configuration
   #
@@ -20,7 +20,8 @@ module "eatzos_lc_asg-restapi" {
   lc_name = "eatzos-prod-lc"
   image_id                     = "ami-0479bd36bf26fbf03"
   instance_type                = "t3a.small"
-  key_name                     = module.keypair-prod-ec2-key.this_key_pair_key_name
+  #key_name                     = "module.keypair-prod-ec2-key.this_key_pair_key_name"
+  key_name                     = "rest-api"
   security_groups              = module.sg_restapi.this_security_group_id
   recreate_asg_when_lc_changes = true
   iam_instance_profile = module.eatzos_iam_instance_profile.name
