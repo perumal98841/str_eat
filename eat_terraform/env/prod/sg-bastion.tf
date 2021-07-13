@@ -1,7 +1,7 @@
 module "sg_prod_bastion" {
     source      = "../../modules/securitygroup"
     aws_region = "us-east-2"
-    create = "false"
+    create = "true"
     name = "sg-prod-bastion"
     vpc_id = module.eatzos_prod_vpc.vpc_id
     description = "Security Group for Bastion"
