@@ -7,11 +7,7 @@ module "sg_eatzos_alb" {
     ingress_with_cidr_blocks = [
     {
       rule        = "http-80-tcp"
-      cidr_blocks = "10.0.0.0/8"
-    },
-    {
-      rule        = "https-443-tcp"
-      cidr_blocks = "10.0.0.0/8"
+      cidr_blocks = "0.0.0.0/0"
     },
   ]
     egress_with_cidr_blocks = [
