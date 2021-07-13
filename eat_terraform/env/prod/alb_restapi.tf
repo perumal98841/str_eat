@@ -6,7 +6,7 @@ resource "random_pet" "this" {
 module "eatzos_prod_alb_restapi" {
     source      = "../../modules/alb"
 
-  name = "eatzos-prod-alb-restapi-${random_pet.this.id}"
+  name = "eatzos-prod-alb-restapi"
 
   load_balancer_type = "application"
 
