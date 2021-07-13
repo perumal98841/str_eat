@@ -1,6 +1,6 @@
 module "prod_bastion" {
     source      = "../../modules/ec2"
-    instance_count = 1
+    instance_count = 0
     name          = "PROD-Windows-Bastion"
   ami           = "ami-0f1319c917f187ba6"
   instance_type = "t3a.small"
