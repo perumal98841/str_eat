@@ -13,7 +13,7 @@ module "sg_restapi" {
     aws_region = "us-east-2"
     name = "jaas-dev-sg-jaas-master"
     vpc_id = module.eatzos_prod_vpc.vpc_id
-    description = "Security Group for Jenkins-as-a-Service, managed by Terraform"
+    description = "Security Group for RestAPI"
     ingress_with_cidr_blocks = [
     {
       rule        = "ssh-tcp"

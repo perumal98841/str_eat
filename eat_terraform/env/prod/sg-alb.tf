@@ -3,7 +3,7 @@ module "sg_eatzos_alb" {
     aws_region = "us-east-2"
     name = "eatzos-prod-sg-alb"
     vpc_id = module.eatzos_prod_vpc.vpc_id
-    description = "Security Group for Jenkins-as-a-Service, managed by Terraform"
+    description = "Security Group for ALB"
     ingress_with_cidr_blocks = [
     {
       rule        = "http-80-tcp"
