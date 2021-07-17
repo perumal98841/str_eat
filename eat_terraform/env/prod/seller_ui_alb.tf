@@ -32,7 +32,7 @@ module "prod_seller_ui_alb" {
 
   target_groups = [
     {
-      name_prefix          = "seller_ui_tg"
+      name_prefix          = "UI-TG"
       backend_protocol     = "HTTP"
       backend_port         = 80
       target_type          = "instance"
