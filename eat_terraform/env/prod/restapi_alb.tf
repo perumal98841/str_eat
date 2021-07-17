@@ -40,7 +40,7 @@ module "prod_restapi_alb" {
       health_check = {
         enabled             = true
         interval            = 60
-        path                = "/favicon.ico"
+        path                = "/"
         port                = "traffic-port"
         healthy_threshold   = 3
         unhealthy_threshold = 3
