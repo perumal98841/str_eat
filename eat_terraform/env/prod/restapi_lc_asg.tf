@@ -20,8 +20,8 @@ module "prod_restapi_lc_asg" {
   lc_name = "prod_restapi_lc_asg"
   image_id                     = "ami-0479bd36bf26fbf03"
   instance_type                = "t3a.small"
-  key_name                     = module.prod_restapi_ec2_keypair.this_key_pair_key_name
-  #key_name                     = "rest-api"
+  #key_name                     = module.prod_restapi_ec2_keypair.this_key_pair_key_name
+  key_name                     = "restapi"
   security_groups              = module.prod_restapi_ec2_sg.this_security_group_id
   recreate_asg_when_lc_changes = true
   iam_instance_profile = module.prod_restapi_iam_instance_profile.name
