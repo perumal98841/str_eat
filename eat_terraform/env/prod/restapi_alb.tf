@@ -12,7 +12,7 @@ module "prod_restapi_alb" {
 
     vpc_id = module.prod_vpc.vpc_id
     security_groups              = module.prod_restapi_alb_sg.this_security_group_id
-    subnets         = [module.prod_vpc.private_subnets[0],module.prod_vpc.private_subnets[1]]
+    subnets         = [module.prod_vpc.public_subnets[0],module.prod_vpc.public_subnets[1]]
 
   http_tcp_listeners = [
     # Forward action is default, either when defined or undefined
