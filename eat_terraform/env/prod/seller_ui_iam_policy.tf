@@ -38,7 +38,7 @@ module "prod_seller_ui_iam_policy_ecr" {
 
 module "prod_seller_ui_iam_policy_logs" {
   source = "../../modules/iam_role_policy"
-  policy_name = "prod_seller_ui_iam_policy_ecr"
+  policy_name = "prod_seller_ui_iam_policy_logs"
   policy = data.aws_iam_policy_document.seller_ui_logs_policy.json
   role = module.prod_seller_ui_iam_role.id
 }
