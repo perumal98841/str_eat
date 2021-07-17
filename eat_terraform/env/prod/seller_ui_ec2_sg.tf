@@ -4,7 +4,7 @@ data "aws_security_group" "seller_ui_alb" {
 }
 
 data "aws_security_group" "seller_ui_bastion" {
-  name   = module.sg_prod_bastion.this_security_group_name[0]
+  name   = module.prod_bastion.this_security_group_name[0]
   vpc_id = module.prod_vpc.vpc_id
 }
 

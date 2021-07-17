@@ -24,7 +24,7 @@ module "prod_restapi_lc_asg" {
   #key_name                     = "rest-api"
   security_groups              = module.prod_restapi_ec2_sg.this_security_group_id
   recreate_asg_when_lc_changes = true
-  iam_instance_profile = module.eatzos_iam_instance_profile.name
+  iam_instance_profile = module.prod_restapi_iam_role.name
   user_data_base64 = base64encode(local.user_data_restpi)
   # Auto scaling group
   asg_name                  = "prod_restapi_asg"

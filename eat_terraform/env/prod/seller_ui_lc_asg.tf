@@ -24,7 +24,7 @@ module "prod_seller_ui_lc_asg" {
   #key_name                     = "rest-api"
   security_groups              = module.prod_seller_ui_ec2_sg.this_security_group_id
   recreate_asg_when_lc_changes = true
-  iam_instance_profile = module.eatzos_iam_instance_profile.name
+  iam_instance_profile = module.prod_seller_ui_iam_instance_profile.name
   user_data_base64 = base64encode(local.user_data_sellet_ui)
   # Auto scaling group
   asg_name                  = "prod_seller_ui_asg"
