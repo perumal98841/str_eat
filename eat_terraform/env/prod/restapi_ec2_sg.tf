@@ -1,9 +1,9 @@
-data "aws_security_group" "alb" {
+data "aws_security_group" "restapi_alb" {
   name   = module.prod_restapi_alb_sg.this_security_group_name[0]
   vpc_id = module.prod_vpc.vpc_id
 }
 
-data "aws_security_group" "bastion" {
+data "aws_security_group" "restapi_bastion" {
   name   = module.sg_prod_bastion.this_security_group_name[0]
   vpc_id = module.prod_vpc.vpc_id
 }
@@ -27,14 +27,14 @@ module "prod_restapi_ec2_sg" {
       to_port                  = 80
       protocol                 = 6
       description              = "HTTP"
-      source_security_group_id = data.aws_security_group.alb.id
+      source_security_group_id = data.aws_security_group.restapi_alb.id
     },
     {
       from_port                = 22
       to_port                  = 22
       protocol                 = 6
       description              = "SSH"
-      source_security_group_id = data.aws_security_group.bastion.id
+      source_security_group_id = data.aws_security_group.restapi_bastion.id
     },
   ]
 
