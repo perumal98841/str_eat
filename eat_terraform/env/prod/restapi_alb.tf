@@ -32,7 +32,7 @@ module "prod_restapi_alb" {
 
   target_groups = [
     {
-      name_prefix          = "API-TG"
+      name_prefix          = "API"
       backend_protocol     = "HTTP"
       backend_port         = 80
       target_type          = "instance"
