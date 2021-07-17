@@ -19,7 +19,7 @@ module "prod_seller_ui_lc_asg" {
   # launch_configuration = "my-existing-launch-configuration" # Use the existing launch configuration
   # create_lc = false # disables creation of launch configuration
   lc_name = "prod_seller_ui_lc_asg"
-  image_id                     = "ami-0479bd36bf26fbf03"
+  image_id                     = "ami-09468ac7fdbb24d36"
   instance_type                = "t3a.small"
   #key_name                     = module.prod_seller_ui_ec2_keypair.this_key_pair_key_name
   key_name                     = "restapi"
@@ -31,9 +31,9 @@ module "prod_seller_ui_lc_asg" {
   asg_name                  = "prod_seller_ui_asg"
   vpc_zone_identifier       = [module.prod_vpc.private_subnets[0],module.prod_vpc.private_subnets[1]]
   health_check_type         = "EC2"
-  min_size                  = 0
-  max_size                  = 0
-  desired_capacity          = 0
+  min_size                  = 1
+  max_size                  = 1
+  desired_capacity          = 1
   wait_for_capacity_timeout = 0
   target_group_arns = module.prod_seller_ui_alb.target_group_arns
     business_tags = {
