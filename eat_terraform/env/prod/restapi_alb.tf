@@ -6,7 +6,7 @@ resource "random_pet" "restapi_this" {
 module "prod_restapi_alb" {
     source      = "../../modules/alb"
 
-  name = "prod_restapi_alb"
+  name = "prod-restapi-alb"
 
   load_balancer_type = "application"
 

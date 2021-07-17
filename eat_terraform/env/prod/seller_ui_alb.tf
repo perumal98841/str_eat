@@ -6,7 +6,7 @@ resource "random_pet" "seller_ui_this" {
 module "prod_seller_ui_alb" {
     source      = "../../modules/alb"
 
-  name = "prod_seller_ui_alb"
+  name = "prod-seller-ui-alb"
 
   load_balancer_type = "application"
 
