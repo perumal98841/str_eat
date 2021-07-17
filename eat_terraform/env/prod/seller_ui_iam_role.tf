@@ -1,8 +1,8 @@
-module "eatzos_iam_role_master" {
+module "prod_seller_ui_iam_role" {
   source = "../../modules/iam_role"
 
 
-  role_name = "eatzos-master-role"
+  role_name = "prod_seller_ui_iam_role"
 
   assume_role_policy = <<-EOF
   {

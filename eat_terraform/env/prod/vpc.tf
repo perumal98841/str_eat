@@ -11,11 +11,11 @@ resource "aws_eip" "nat" {
         Product = "eatzos App"
     } 
 }
-module "eatzos_prod_vpc" {
+module "prod_vpc" {
     source      = "../../modules/vpc"
     aws_region = "us-east-2"
-    name = "eatzos-prod"
-    vpcname ="eatzos-prod-vpc"
+    name = "prod-vpc"
+    vpcname ="prod-vpc"
     cidr    = "10.8.24.0/23"
     enable_dns_hostnames             = true
     enable_dns_support               = true

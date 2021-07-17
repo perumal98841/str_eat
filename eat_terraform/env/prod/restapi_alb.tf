@@ -19,12 +19,14 @@ module "prod_restapi_alb" {
     {
       port        = 80
       protocol    = "HTTP"
-      action_type = "redirect"
-      redirect = {
-        port        = "443"
-        protocol    = "HTTPS"
-        status_code = "HTTP_301"
-      }
+      action_type = "forward"
+      target_group_arn = module.prod_restapi_alb.target_group_arns
+#      action_type = "redirect"      
+#      redirect = {
+#        port        = "443"
+#        protocol    = "HTTPS"
+#        status_code = "HTTP_301"
+#      }
     },
   ]
 

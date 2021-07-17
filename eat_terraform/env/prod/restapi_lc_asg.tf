@@ -1,9 +1,9 @@
 locals {
   user_data = <<EOF
 #!/bin/bash
-#echo $(aws ecr get-authorization-token --region us-east-1 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS 187945997467.dkr.ecr.us-east-1.amazonaws.com --password-stdin
-#docker pull .dkr.ecr.us-east-1.amazonaws.com/jaas-dev:jaas-v1.3
-#docker run -itd --log-driver=awslogs --log-opt awslogs-region=us-east-1 --log-opt awslogs-group=jaas-dev-master-log-us-east-1 -p 80:8080 -p 50000:50000 -v /efs-volume/jaas:/var/jenkins_home 187945997467.dkr.ecr.us-east-1.amazonaws.com/jaas-dev:jaas-v1.3
+echo $(aws ecr get-authorization-token --region us-east-1 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS 187945997467.dkr.ecr.us-east-1.amazonaws.com --password-stdin
+docker pull 811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-prod-api:latest
+docker run -itd --log-driver=awslogs --log-opt awslogs-region=us-east-2 --log-opt awslogs-group=prod_restapi_log_group_us_east_2 -p 80:8080  811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-prod-api:latest
 EOF
 }
 
