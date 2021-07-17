@@ -1,7 +1,7 @@
 locals {
-  user_data = <<EOF
+  user_data_sellet_ui = <<EOF
 #!/bin/bash
-#echo $(aws ecr get-authorization-token --region us-east-1 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS 187945997467.dkr.ecr.us-east-1.amazonaws.com --password-stdin
+echo $(aws ecr get-authorization-token --region us-east-1 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS 187945997467.dkr.ecr.us-east-1.amazonaws.com --password-stdin
 docker pull docker pull 811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-prod-seller:latest
 docker run -itd --log-driver=awslogs --log-opt awslogs-region=us-east-2 --log-opt awslogs-group=prod_seller_ui_log_group_us_east_2  -p 80:4200  811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-prod-seller:latest
 EOF
@@ -25,7 +25,7 @@ module "prod_seller_ui_lc_asg" {
   security_groups              = module.prod_seller_ui_ec2_sg.this_security_group_id
   recreate_asg_when_lc_changes = true
   iam_instance_profile = module.eatzos_iam_instance_profile.name
-  user_data_base64 = base64encode(local.user_data)
+  user_data_base64 = base64encode(local.user_data_sellet_ui)
   # Auto scaling group
   asg_name                  = "prod_seller_ui_asg"
   vpc_zone_identifier       = [module.prod_vpc.private_subnets[0],module.prod_vpc.private_subnets[1]]

@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "ecr_policy" {
+data "aws_iam_policy_document" "seller_ui_ecr_policy" {
   statement {
     sid       = "AllowAccessECR"
     actions   = [
@@ -20,6 +20,6 @@ data "aws_iam_policy_document" "ecr_policy" {
 module "prod_seller_ui_iam_policy_ecr" {
   source = "../../modules/iam_role_policy"
   policy_name = "prod_seller_ui_iam_policy_ecr"
-  policy = data.aws_iam_policy_document.ecr_policy.json
+  policy = data.aws_iam_policy_document.seller_ui_ecr_policy.json
   role = module.prod_seller_ui_iam_role.id
 }
