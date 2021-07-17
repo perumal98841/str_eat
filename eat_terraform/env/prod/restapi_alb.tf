@@ -32,7 +32,7 @@ module "prod_restapi_alb" {
 
   target_groups = [
     {
-      name_prefix          = "h1"
+      name_prefix          = "restapi_tg"
       backend_protocol     = "HTTP"
       backend_port         = 80
       target_type          = "instance"
