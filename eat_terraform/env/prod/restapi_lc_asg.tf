@@ -1,7 +1,7 @@
 locals {
   user_data_restpi = <<EOF
 #!/bin/bash
-echo $(aws ecr get-authorization-token --region us-east-1 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS 187945997467.dkr.ecr.us-east-1.amazonaws.com --password-stdin
+echo $(aws ecr get-authorization-token --region us-east-2 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS 811922229133.dkr.ecr.us-east-2.amazonaws.com --password-stdin
 docker pull 811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-prod-api:latest
 docker run -itd --log-driver=awslogs --log-opt awslogs-region=us-east-2 --log-opt awslogs-group=prod_restapi_log_group_us_east_2 -p 80:8080  811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-prod-api:latest
 EOF
@@ -30,9 +30,9 @@ module "prod_restapi_lc_asg" {
   asg_name                  = "prod_restapi_asg"
   vpc_zone_identifier       = [module.prod_vpc.private_subnets[0],module.prod_vpc.private_subnets[1]]
   health_check_type         = "EC2"
-  min_size                  = 1
-  max_size                  = 1
-  desired_capacity          = 1
+  min_size                  = 0
+  max_size                  = 0
+  desired_capacity          = 0
   wait_for_capacity_timeout = 0
   target_group_arns = module.prod_restapi_alb.target_group_arns
     business_tags = {
