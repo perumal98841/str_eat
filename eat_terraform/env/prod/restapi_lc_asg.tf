@@ -31,9 +31,9 @@ module "prod_restapi_lc_asg" {
   asg_name                  = "prod_restapi_asg"
   vpc_zone_identifier       = [module.prod_vpc.private_subnets[0],module.prod_vpc.private_subnets[1]]
   health_check_type         = "EC2"
-  min_size                  = 1
-  max_size                  = 1
-  desired_capacity          = 1
+  min_size                  = 0
+  max_size                  = 0
+  desired_capacity          = 0
   wait_for_capacity_timeout = 0
   target_group_arns = module.prod_restapi_alb.target_group_arns
     business_tags = {
