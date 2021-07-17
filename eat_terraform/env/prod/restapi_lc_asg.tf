@@ -1,10 +1,10 @@
 locals {
   user_data_restpi = <<EOF
 #!/bin/bash
-echo $(aws ecr get-authorization-token --region us-east-2 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS 811922229133.dkr.ecr.us-east-2.amazonaws.com --password-stdin
-docker pull 811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-prod-api:latest
-#docker run -itd --log-driver=awslogs --log-opt awslogs-region=us-east-2 --log-opt awslogs-group=prod_restapi_log_group_us_east_2 -p 80:8080  811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-prod-api:latest
-docker run -itd --log-driver=awslogs --log-opt awslogs-region=us-east-2 --log-opt awslogs-group=prod_restapi_log_group_us_east_2 -p 80:80  811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-prod-api:latest
+sudo echo $(aws ecr get-authorization-token --region us-east-2 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS 811922229133.dkr.ecr.us-east-2.amazonaws.com --password-stdin
+sudo docker pull 811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-prod-api:latest
+#sudo docker run -itd --log-driver=awslogs --log-opt awslogs-region=us-east-2 --log-opt awslogs-group=prod_restapi_log_group_us_east_2 -p 80:8080  811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-prod-api:latest
+sudo docker run -itd --log-driver=awslogs --log-opt awslogs-region=us-east-2 --log-opt awslogs-group=prod_restapi_log_group_us_east_2 -p 80:80  811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-prod-api:latest
 EOF
 }
 
