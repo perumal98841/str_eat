@@ -40,13 +40,13 @@ module "prod_restapi_alb" {
       health_check = {
         enabled             = true
         interval            = 60
-        path                = "/"
+        path                = "/api/address/state"
         port                = "traffic-port"
         healthy_threshold   = 3
         unhealthy_threshold = 3
         timeout             = 6
         protocol            = "HTTP"
-        matcher             = "200-399"
+        matcher             = "200"
       }
       stickiness = {
         enabled         = true
