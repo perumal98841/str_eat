@@ -8,7 +8,7 @@ module "prod_bastion_ec2_sg" {
     ingress_with_cidr_blocks = [
     {
       rule        = "rdp-tcp"
-      cidr_blocks = "120.138.12.232/32"
+      cidr_blocks = "49.37.209.63/32"
     },
   ]
     egress_with_cidr_blocks = [
