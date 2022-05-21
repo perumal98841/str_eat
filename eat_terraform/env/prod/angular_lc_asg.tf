@@ -1,5 +1,5 @@
 locals {
-  user_data_restpi = <<EOF
+  user_data_angular = <<EOF
 #!/bin/bash
 sudo echo $(aws ecr get-authorization-token --region us-east-2 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS 811922229133.dkr.ecr.us-east-2.amazonaws.com --password-stdin
 sudo docker pull 811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-prod-api:latest
@@ -26,7 +26,7 @@ module "prod_angular_lc_asg" {
   security_groups              = module.prod_angular_ec2_sg.this_security_group_id
   recreate_asg_when_lc_changes = true
   iam_instance_profile = module.prod_angular_iam_instance_profile.name
-  user_data_base64 = base64encode(local.user_data_restpi)
+  user_data_base64 = base64encode(local.user_data_angular)
   # Auto scaling group
   asg_name                  = "prod_angular_asg"
   vpc_zone_identifier       = [module.prod_vpc.private_subnets[0],module.prod_vpc.private_subnets[1]]
