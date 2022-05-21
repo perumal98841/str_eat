@@ -32,7 +32,7 @@ module "prod_angular_alb" {
 
   target_groups = [
     {
-      name_prefix          = "API"
+      name_prefix          = "Angular"
       backend_protocol     = "HTTP"
       backend_port         = 80
       target_type          = "instance"
