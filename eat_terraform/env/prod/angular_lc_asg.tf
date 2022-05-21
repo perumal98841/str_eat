@@ -1,9 +1,10 @@
 locals {
   user_data_angular = <<EOF
 #!/bin/bash
-sudo echo $(aws ecr get-authorization-token --region us-east-2 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS 811922229133.dkr.ecr.us-east-2.amazonaws.com --password-stdin
-sudo docker pull 811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-prod-api:latest
-sudo docker run -itd --log-driver=awslogs --log-opt awslogs-region=us-east-2 --log-opt awslogs-group=prod_angular_log_group_us_east_2 -p 80:8080  811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-prod-api:latest
+echo "I am Angular PROD"
+#sudo echo $(aws ecr get-authorization-token --region us-east-2 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS 811922229133.dkr.ecr.us-east-2.amazonaws.com --password-stdin
+#sudo docker pull 811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-prod-api:latest
+#sudo docker run -itd --log-driver=awslogs --log-opt awslogs-region=us-east-2 --log-opt awslogs-group=prod_angular_log_group_us_east_2 -p 80:8080  811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-prod-api:latest
 #sudo docker run -itd --log-driver=awslogs --log-opt awslogs-region=us-east-2 --log-opt awslogs-group=prod_angular_log_group_us_east_2 -p 80:80  811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-prod-api:latest
 EOF
 }
@@ -19,7 +20,7 @@ module "prod_angular_lc_asg" {
   # launch_configuration = "my-existing-launch-configuration" # Use the existing launch configuration
   # create_lc = false # disables creation of launch configuration
   lc_name = "prod_angular_lc_asg"
-  image_id                     = "ami-09468ac7fdbb24d36"
+  image_id                     = "ami-01cb78379af962fdf"
   instance_type                = "t3a.small"
   #key_name                     = module.prod_angular_ec2_keypair.this_key_pair_key_name
   key_name                     = "angular"
