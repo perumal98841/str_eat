@@ -17,7 +17,7 @@ module "uat_seller_ui_ec2_sg" {
     ingress_with_cidr_blocks = [
     {
       rule        = "ssh-tcp"
-      cidr_blocks = "10.8.24.0/28,10.8.24.16/28"
+      cidr_blocks = "10.8.26.0/27,10.8.26.32/27"
     },
   ]
 

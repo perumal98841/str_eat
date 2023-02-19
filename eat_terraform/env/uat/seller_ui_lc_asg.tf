@@ -1,10 +1,10 @@
 locals {
   user_data_sellet_ui = <<EOF
 #!/bin/bash
-echo $(aws ecr get-authorization-token --region us-east-2 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS 811922229133.dkr.ecr.us-east-2.amazonaws.com --password-stdin
-docker pull 811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-uat-seller:latest
-docker run -itd --log-driver=awslogs --log-opt awslogs-region=us-east-2 --log-opt awslogs-group=uat_seller_ui_log_group_us_east_2  -p 80:4200  811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-uat-seller:latest
-#docker run -itd --log-driver=awslogs --log-opt awslogs-region=us-east-2 --log-opt awslogs-group=uat_seller_ui_log_group_us_east_2  -p 80:80  811922229133.dkr.ecr.us-east-2.amazonaws.com/eatzos-uat-seller:latest
+echo $(aws ecr get-authorization-token --region us-east-2 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS 340785533010.dkr.ecr.us-east-2.amazonaws.com --password-stdin
+docker pull 340785533010.dkr.ecr.us-east-2.amazonaws.com/eatzos-uat-seller:latest
+docker run -itd --log-driver=awslogs --log-opt awslogs-region=us-east-2 --log-opt awslogs-group=uat_seller_ui_log_group_us_east_2  -p 80:4200  340785533010.dkr.ecr.us-east-2.amazonaws.com/eatzos-uat-seller:latest
+#docker run -itd --log-driver=awslogs --log-opt awslogs-region=us-east-2 --log-opt awslogs-group=uat_seller_ui_log_group_us_east_2  -p 80:80  340785533010.dkr.ecr.us-east-2.amazonaws.com/eatzos-uat-seller:latest
 EOF
 }
 
@@ -19,10 +19,10 @@ module "uat_seller_ui_lc_asg" {
   # launch_configuration = "my-existing-launch-configuration" # Use the existing launch configuration
   # create_lc = false # disables creation of launch configuration
   lc_name = "uat_seller_ui_lc_asg"
-  image_id                     = "ami-09468ac7fdbb24d36"
-  instance_type                = "t3a.small"
+  image_id                     = "ami-034245ac9c610e45d"
+  instance_type                = "t2.micro"
   #key_name                     = module.uat_seller_ui_ec2_keypair.this_key_pair_key_name
-  key_name                     = "restapi"
+  key_name                     = "uat-seller-ui-key"
   security_groups              = module.uat_seller_ui_ec2_sg.this_security_group_id
   recreate_asg_when_lc_changes = true
   iam_instance_profile = module.uat_seller_ui_iam_instance_profile.name
