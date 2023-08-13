@@ -10,7 +10,7 @@
 
 module "dev_api_ec2_sg" {
     source      = "../../modules/securitygroup"
-    aws_region = "us-east-2"
+    aws_region = "us-east-1"
     name = "dev_api_ec2_sg"
     vpc_id = module.dev_vpc.vpc_id
     description = "Security Group for dev_api EC2"
