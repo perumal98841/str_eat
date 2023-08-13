@@ -1,7 +1,7 @@
 module "dev_ui" {
     source      = "../../modules/ec2"
-    instance_count = 1
-    name          = "PROD-Windows-Bastion"
+    instance_count = 0
+    name          = "DEV_UI_EC2"
   ami           = "ami-09a54e7baef19d5f4"
   instance_type = "t3a.small"
   subnet_id     = tolist(module.dev_vpc.public_subnets)[0]
