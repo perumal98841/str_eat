@@ -3,7 +3,7 @@ module "prod_delivery_stream" {
     name        = "aws-waf-logs-prod-delivery-stream"
     destination = "splunk"
 
-#s3_configuration 
+s3_configuration 
     prefix = "WAFlogs"
     compression_format = "GZIP"
     buffer_interval    = 400  
@@ -13,7 +13,7 @@ module "prod_delivery_stream" {
     bucket_arn         = module.prod_logs_s3_bucket.s3_bucket_arn
 
 
-#Splunk configuration 
+Splunk configuration 
 
     hec_endpoint               = "https://Will-Update:443/services/collector"
     hec_token                  = "WillBeReplaceByJenkins"
