@@ -23,8 +23,8 @@ module "prod_vpc" {
     public_subnets = ["10.8.30.0/26"]
     private_subnets = ["10.8.30.128/26"]
 
-    enable_nat_gateway = false
-    single_nat_gateway = false
+    enable_nat_gateway = true
+    single_nat_gateway = true
     one_nat_gateway_per_az = true
     #reuse_nat_ips = true
     #external_nat_ip_ids = "${aws_eip.nat.*.id}"    
