@@ -3,7 +3,7 @@ module "prod_wafv2" {
   name_prefix = "prod-wafv2"
   alb_arn     = module.prod_api_alb.this_lb_arn
 
-  #log_destination_configs = module.prod_delivery_stream.firehose_delivery_stream_arn
+  log_destination_configs = module.prod_delivery_stream.firehose_delivery_stream_arn
   resource_arn            = module.prod_wafv2.web_acl_arn
   
 
