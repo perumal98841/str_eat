@@ -28,7 +28,8 @@ module "prod_api_lc_asg" {
   user_data_base64 = base64encode(local.user_data_restpi)
   # Auto scaling group
   asg_name                  = "prod_api_asg"
-  vpc_zone_identifier       = [module.prod_vpc.private_subnets[0],module.prod_vpc.private_subnets[1]]
+  #vpc_zone_identifier       = [module.prod_vpc.private_subnets[0],module.prod_vpc.private_subnets[1]]
+  vpc_zone_identifier       = [module.prod_vpc.private_subnets[0]]
   health_check_type         = "EC2"
   min_size                  = 1
   max_size                  = 1
