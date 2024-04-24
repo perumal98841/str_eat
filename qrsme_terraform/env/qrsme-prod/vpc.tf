@@ -20,8 +20,8 @@ module "prod_vpc" {
     enable_dns_hostnames             = true
     enable_dns_support               = true
     azs = ["us-east-1a"]
-    public_subnets = ["10.8.30.0/26"]
-    private_subnets = ["10.8.30.128/26"]
+    public_subnets = ["10.8.30.0/26","10.8.30.64/26"]
+    private_subnets = ["10.8.30.128/26"."10.8.30.192/26"]
 
     enable_nat_gateway = true
     single_nat_gateway = true
