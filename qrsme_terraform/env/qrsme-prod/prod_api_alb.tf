@@ -1,4 +1,4 @@
-resource "random_pet" "restapi_this" {
+resource "random_pet" "api_this" {
   length = 2
 }
 
@@ -6,7 +6,7 @@ resource "random_pet" "restapi_this" {
 module "prod_api_alb" {
     source      = "../../modules/alb"
 
-  name = "prod-restapi-alb"
+  name = "prod-api-alb"
 
   load_balancer_type = "application"
 
