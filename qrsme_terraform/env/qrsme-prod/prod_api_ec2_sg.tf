@@ -1,12 +1,12 @@
-#data "aws_security_group" "prod_api_alb" {
-#  name   = module.prod_api_alb_sg.this_security_group_name[0]
-#  vpc_id = module.prod_vpc.vpc_id
-#}
+data "aws_security_group" "prod_api_alb" {
+  name   = module.prod_api_alb_sg.this_security_group_name[0]
+  vpc_id = module.prod_vpc.vpc_id
+}
 
-#data "aws_security_group" "prod_api_bastion" {
-#  name   = module.prod_bastion_ec2_sg.this_security_group_name[0]
-#  vpc_id = module.prod_vpc.vpc_id
-#}
+data "aws_security_group" "prod_bastion_sg" {
+  name   = module.prod_bastion_sg.this_security_group_name[0]
+  vpc_id = module.prod_vpc.vpc_id
+}
 
 module "prod_api_ec2_sg" {
     source      = "../../modules/securitygroup"
