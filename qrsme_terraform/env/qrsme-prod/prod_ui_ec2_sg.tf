@@ -1,7 +1,7 @@
-data "aws_security_group" "prod_ui_alb" {
-  name   = module.prod_ui_alb_sg.this_security_group_name[0]
-  vpc_id = module.prod_vpc.vpc_id
-}
+#data "aws_security_group" "prod_ui_alb" {
+#  name   = module.prod_ui_alb_sg.this_security_group_name[0]
+#  vpc_id = module.prod_vpc.vpc_id
+#}
 
 data "aws_security_group" "prod_bastion_sg_ui" {
   name   = module.prod_bastion_sg.this_security_group_name[0]
@@ -22,13 +22,13 @@ module "prod_ui_ec2_sg" {
 #  ]
 
       ingress_with_source_security_group_id = [
-    {
-      from_port                = 80
-      to_port                  = 80
-      protocol                 = 6
-      description              = "HTTP"
-      source_security_group_id = data.aws_security_group.prod_ui_alb.id
-    },
+#    {
+#      from_port                = 80
+#      to_port                  = 80
+#      protocol                 = 6
+#      description              = "HTTP"
+#      source_security_group_id = data.aws_security_group.prod_ui_alb.id
+#    },
     {
       from_port                = 80
       to_port                  = 80
