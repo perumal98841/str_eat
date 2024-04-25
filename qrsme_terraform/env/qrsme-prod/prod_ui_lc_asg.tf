@@ -16,7 +16,7 @@ module "prod_ui_lc_asg" {
   # launch_configuration = "my-existing-launch-configuration" # Use the existing launch configuration
   # create_lc = false # disables creation of launch configuration
   lc_name = "prod_ui_lc_asg"
-  image_id                     = "ami-007640634349ffa43"
+  image_id                     = "ami-020fe21ef326b03d5"
   instance_type                = "t3a.small"
   key_name                     = "dev_ui"
   security_groups              = module.prod_ui_ec2_sg.this_security_group_id
