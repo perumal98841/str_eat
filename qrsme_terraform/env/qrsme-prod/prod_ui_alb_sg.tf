@@ -1,13 +1,13 @@
-module "prod_bastion_sg" {
+module "prod_ui_alb_sg" {
     source      = "../../modules/securitygroup"
     aws_region = "us-east-1"
-    name = "prod-bastion-sg"
+    name = "prod_ui_alb_sg"
     vpc_id = module.prod_vpc.vpc_id
-    description = "Security Group for QRSME Bastion, managed by Terraform"
+    description = "Security Group for UI ALB"
     ingress_with_cidr_blocks = [
     {
-      rule        = "rdp-tcp"
-      cidr_blocks = "10.3.138.192/27,10.3.138.32/27"
+      rule        = "http-80-tcp"
+      cidr_blocks = "0.0.0.0/0"
     },
   ]
     egress_with_cidr_blocks = [
@@ -22,6 +22,6 @@ module "prod_bastion_sg" {
     }
     technical_tags = {
         Env = "prod"
-        Product = "QRSME App"
+        Product = "QRSME"
     }
 }

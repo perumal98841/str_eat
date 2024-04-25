@@ -14,29 +14,36 @@ module "prod_api_ec2_sg" {
     name = "prod_api_ec2_sg"
     vpc_id = module.prod_vpc.vpc_id
     description = "Security Group for prod_api EC2"
-    ingress_with_cidr_blocks = [
-    {
-      rule        = "ssh-tcp"
-      cidr_blocks = "10.8.24.0/28,10.8.24.16/28"
-    },
-  ]
-
-#      ingress_with_source_security_group_id = [
+#    ingress_with_cidr_blocks = [
 #    {
-#      from_port                = 80
-#      to_port                  = 80
-#      protocol                 = 6
-#      description              = "HTTP"
-#      source_security_group_id = data.aws_security_group.prod_api_alb.id
-#    },
-#    {
-#      from_port                = 22
-#      to_port                  = 22
-#      protocol                 = 6
-#      description              = "SSH"
-#      source_security_group_id = data.aws_security_group.prod_api_bastion.id
+#      rule        = "ssh-tcp"
+#      cidr_blocks = "10.8.24.0/28,10.8.24.16/28"
 #    },
 #  ]
+
+      ingress_with_source_security_group_id = [
+    {
+      from_port                = 80
+      to_port                  = 80
+      protocol                 = 6
+      description              = "HTTP"
+      source_security_group_id = data.aws_security_group.prod_api_alb.id
+    },
+    {
+      from_port                = 80
+      to_port                  = 80
+      protocol                 = 6
+      description              = "HTTP"
+      source_security_group_id = data.aws_security_group.prod_bastion_sg.id
+    },    
+    {
+      from_port                = 22
+      to_port                  = 22
+      protocol                 = 6
+      description              = "SSH"
+      source_security_group_id = data.aws_security_group.prod_bastion_sg.id
+    },
+  ]
 
 
     egress_with_cidr_blocks = [

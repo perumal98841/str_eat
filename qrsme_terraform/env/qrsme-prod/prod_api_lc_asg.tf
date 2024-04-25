@@ -1,7 +1,7 @@
 locals {
   user_data_restpi = <<EOF
 #!/bin/bash
-sudo echo $(aws ecr get-authorization-token --region us-east-2 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS 811922229133.dkr.ecr.us-east-2.amazonaws.com --password-stdin
+sudo echo $(aws ecr get-authorization-token --region us-east-1 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS 179982809046.dkr.ecr.us-east-1.amazonaws.com --password-stdin
 sudo docker pull 179982809046.dkr.ecr.us-east-1.amazonaws.com/dev-api:latest
 sudo docker run -itd --log-driver=awslogs --log-opt awslogs-region=us-east-1 --log-opt awslogs-group=prod_api_log_group_us_east_1 -p 80:8080  179982809046.dkr.ecr.us-east-1.amazonaws.com/dev-api:latest
 EOF
@@ -31,8 +31,8 @@ module "prod_api_lc_asg" {
   vpc_zone_identifier       = [module.prod_vpc.private_subnets[0],module.prod_vpc.private_subnets[1]]
     health_check_type         = "EC2"
   min_size                  = 1
-  max_size                  = 1
-  desired_capacity          = 1
+  max_size                  = 2
+  desired_capacity          = 2
   wait_for_capacity_timeout = 0
   target_group_arns = module.prod_api_alb.target_group_arns
     business_tags = {
