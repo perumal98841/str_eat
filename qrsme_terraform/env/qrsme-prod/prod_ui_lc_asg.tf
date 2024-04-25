@@ -1,5 +1,5 @@
 locals {
-  user_data_restpi = <<EOF
+  user_data_ui = <<EOF
 #!/bin/bash
 bash /root/deployui.sh
 EOF
@@ -22,7 +22,7 @@ module "prod_ui_lc_asg" {
   security_groups              = module.prod_ui_ec2_sg.this_security_group_id
   recreate_asg_when_lc_changes = true
   iam_instance_profile = module.prod_ui_iam_instance_profiles.name
-  user_data_base64 = base64encode(local.user_data_restpi)
+  user_data_base64 = base64encode(local.user_data_ui)
   # Auto scaling group
   asg_name                  = "prod_ui_asg"
   vpc_zone_identifier       = [module.prod_vpc.private_subnets[0],module.prod_vpc.private_subnets[1]]
