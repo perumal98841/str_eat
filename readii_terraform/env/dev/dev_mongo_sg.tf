@@ -1,7 +1,7 @@
-#data "aws_security_group" "dev_api_alb" {
-#  name   = module.dev_api_alb_sg.this_security_group_name[0]
-#  vpc_id = module.dev_vpc.vpc_id
-#}
+data "aws_security_group" "dev_api_ec2_sg" {
+  name   = module.dev_api_ec2_sg.this_security_group_name[0]
+  vpc_id = module.dev_vpc.vpc_id
+}
 
 #data "aws_security_group" "dev_api_bastion" {
 #  name   = module.prod_bastion_ec2_sg.this_security_group_name[0]
