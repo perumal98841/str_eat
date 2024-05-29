@@ -8,12 +8,12 @@
 #  vpc_id = module.dev_vpc.vpc_id
 #}
 
-module "dev_api_ec2_sg" {
+module "dev_mongo_sg" {
     source      = "../../modules/securitygroup"
     aws_region = "us-east-1"
-    name = "dev_api_ec2_sg"
+    name = "dev_mongo_sg"
     vpc_id = module.dev_vpc.vpc_id
-    description = "Security Group for dev_api EC2"
+    description = "Security Group for MongoDB"
 #    ingress_with_cidr_blocks = [
 #    {
 #      rule        = "ssh-tcp"
