@@ -1,6 +1,6 @@
 module "dev_api" {
     source      = "../../modules/ec2"
-    instance_count = 0
+    instance_count = 1
     name          = "DEV_EC2"
   ami           = "ami-0cf9618d72642d6dd"
   instance_type = "t2.micro"
