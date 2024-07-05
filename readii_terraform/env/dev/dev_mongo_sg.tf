@@ -10,6 +10,7 @@ data "aws_security_group" "dev_api_ec2_sg" {
 
 module "dev_mongo_sg" {
     source      = "../../modules/securitygroup"
+    create = "false"
     aws_region = "us-east-1"
     name = "dev_mongo_sg"
     vpc_id = module.dev_vpc.vpc_id

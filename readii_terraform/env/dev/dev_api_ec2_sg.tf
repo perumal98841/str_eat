@@ -51,6 +51,6 @@ module "dev_api_ec2_sg" {
     }
     technical_tags = {
         Env = "dev"
-        Product = "Readii App"
+        Product = "Readii App API"
     }
 }

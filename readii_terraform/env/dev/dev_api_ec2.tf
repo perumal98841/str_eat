@@ -15,7 +15,7 @@ module "dev_api" {
     }
     technical_tags = {
         Env = "dev"
-        Product = "Readii App"
+        Product = "Readii App API"
     } 
     
 }
