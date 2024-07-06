@@ -1,5 +1,5 @@
 resource "aws_eip_association" "eip_assoc" {
-  instance_id   = module.dev_portal.this_instance_id
+  instance_id   = module.dev_portal.id
   allocation_id = aws_eip.example.id
 }
 

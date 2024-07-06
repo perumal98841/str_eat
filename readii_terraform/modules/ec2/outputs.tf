@@ -1,4 +1,7 @@
-output "this_instance_id" {
-  description = "The ID of the Instance"
-  value = concat(aws_instance.this.*.id)
+output "id" {
+  description = "The ID of the instance"
+  value = try(
+    aws_instance.this[0].id,
+    null,
+  )
 }
