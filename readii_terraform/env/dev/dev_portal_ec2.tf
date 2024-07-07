@@ -8,7 +8,7 @@ module "dev_portal" {
   subnet_id     = tolist(module.dev_vpc.public_subnets)[0]
 #  private_ips                 = ["10.8.24.10"]
   vpc_security_group_ids      =   module.dev_portal_ec2_sg.this_security_group_id
-  associate_public_ip_address = false
+  iam_instance_profile = module.dev_portal_iam_instance_profile.name
     business_tags = {
         Owner = "Perumal Varadharajulu"
         Email = "perumal@strinkit.com"

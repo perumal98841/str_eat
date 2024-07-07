@@ -5,4 +5,7 @@ resource "aws_eip_association" "eip_assoc" {
 
 resource "aws_eip" "example" {
   domain = "vpc"
+tags = {
+    Name = "DEV_Portal_EIP"
+  }
 }
