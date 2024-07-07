@@ -1,7 +1,7 @@
-#data "aws_security_group" "dev_portal_alb" {
-#  name   = module.dev_portal_alb_sg.this_security_group_name[0]
-#  vpc_id = module.dev_vpc.vpc_id
-#}
+data "aws_security_group" "dev_api_ec2_sg_data" {
+  name   = module.dev_api_ec2_sg.this_security_group_name[0]
+  vpc_id = module.dev_vpc.vpc_id
+}
 
 #data "aws_security_group" "dev_portal_bastion" {
 #  name   = module.prod_bastion_ec2_sg.this_security_group_name[0]
@@ -21,14 +21,14 @@ module "dev_portal_ec2_sg" {
     },
   ]
 
-#      ingress_with_source_security_group_id = [
-#    {
-#      from_port                = 80
-#      to_port                  = 80
-#      protocol                 = 6
-#      description              = "HTTP"
-#      source_security_group_id = data.aws_security_group.dev_portal_alb.id
-#    },
+      ingress_with_source_security_group_id = [
+    {
+      from_port                = 9001
+      to_port                  = 9001
+      protocol                 = 6
+      description              = "HTTP"
+      source_security_group_id = data.aws_security_group.dev_api_ec2_sg_data.id
+    }
 #    {
 #      from_port                = 22
 #      to_port                  = 22
@@ -36,7 +36,7 @@ module "dev_portal_ec2_sg" {
 #      description              = "SSH"
 #      source_security_group_id = data.aws_security_group.dev_portal_bastion.id
 #    },
-#  ]
+  ]
 
 
     egress_with_cidr_blocks = [
