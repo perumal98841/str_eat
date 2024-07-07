@@ -16,8 +16,8 @@ module "dev_portal_ec2_sg" {
     description = "Security Group for dev_portal EC2"
     ingress_with_cidr_blocks = [
     {
-      rule        = "ssh-tcp"
-      cidr_blocks = "10.8.24.0/28,10.8.24.16/28"
+      rule        = "http-80-tcp"
+      cidr_blocks = "0.0.0.0/0"
     },
   ]
 
