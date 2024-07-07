@@ -16,12 +16,16 @@ module "dev_api_ec2_sg" {
     description = "Security Group for dev_api EC2"
     ingress_with_cidr_blocks = [
     {
-      rule        = "ssh-tcp"
-      cidr_blocks = "10.8.24.0/28,10.8.24.16/28"
+      rule        = "http-80-tcp"
+      cidr_blocks = "0.0.0.0/0"
+    },
+    {
+      rule        = "http-portainer"
+      cidr_blocks = "0.0.0.0/0"
     },
   ]
 
-#      ingress_with_source_security_group_id = [
+      ingress_with_source_security_group_id = [
 #    {
 #      from_port                = 80
 #      to_port                  = 80
@@ -29,14 +33,14 @@ module "dev_api_ec2_sg" {
 #      description              = "HTTP"
 #      source_security_group_id = data.aws_security_group.dev_api_alb.id
 #    },
-#    {
-#      from_port                = 22
-#      to_port                  = 22
-#      protocol                 = 6
-#      description              = "SSH"
-#      source_security_group_id = data.aws_security_group.dev_api_bastion.id
-#    },
-#  ]
+    {
+      from_port                = 22
+      to_port                  = 22
+      protocol                 = 6
+      description              = "SSH"
+      source_security_group_id = "sg-0f62c5f4a44f08461"
+    },
+  ]
 
 
     egress_with_cidr_blocks = [
