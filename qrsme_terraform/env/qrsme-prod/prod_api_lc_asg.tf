@@ -16,7 +16,7 @@ module "prod_api_lc_asg" {
   # launch_configuration = "my-existing-launch-configuration" # Use the existing launch configuration
   # create_lc = false # disables creation of launch configuration
   lc_name = "prod_api_lc_asg"
-  image_id                     = "ami-04dd99f510c4ff73c"
+  image_id                     = "ami-08f7da7e920b93baf"
   instance_type                = "t3a.small"
   #key_name                     = module.prod_restapi_ec2_keypair.this_key_pair_key_name
   key_name                     = "dev_api"
