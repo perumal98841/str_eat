@@ -1,6 +1,8 @@
 locals {
   user_data_ui = <<EOF
 #!/bin/bash
+aws s3 sync  s3://prod-docker-compose /root/.
+chmod 755 /root/de*
 bash /root/deployui.sh
 EOF
 }
@@ -16,7 +18,7 @@ module "prod_ui_lc_asg" {
   # launch_configuration = "my-existing-launch-configuration" # Use the existing launch configuration
   # create_lc = false # disables creation of launch configuration
   lc_name = "prod_ui_lc_asg"
-  image_id                     = "ami-0e958ed57e5f405ce"
+  image_id                     = "ami-06b3df02fb9168630"
   instance_type                = "t3a.small"
   key_name                     = "dev_ui"
   security_groups              = module.prod_ui_ec2_sg.this_security_group_id
