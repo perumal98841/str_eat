@@ -29,7 +29,7 @@ data "aws_iam_policy_document" "prod_ui_logs_policy" {
   }
 }
 
-data "aws_iam_policy_document" "prod_s3_download" {
+data "aws_iam_policy_document" "prod_ui_s3_download" {
   statement {
     sid       = "DownloadS3Files"
     actions   = [
@@ -60,6 +60,6 @@ module "prod_ui_iam_policy_logs" {
 module "prod_ui_iam_policy_s3" {
   source = "../../modules/iam_role_policy"
   policy_name = "prod_s3_download"
-  policy = data.aws_iam_policy_document.prod_s3_download.json
+  policy = data.aws_iam_policy_document.prod_ui_s3_download.json
   role = module.prod_ui_iam_role.id
 }
