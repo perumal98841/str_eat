@@ -3,6 +3,7 @@ locals {
 #!/bin/bash
 aws s3 sync  s3://prod-docker-compose /root/.
 chmod 755 /root/de*
+bash /root/deployapi.sh
 EOF
 }
 
